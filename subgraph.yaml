@@ -1,0 +1,87 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Register
+    network: arbitrum-sepolia
+    source:
+      address: "0x92aC6a4d4D3ddFb7eA2B32847D6Cf89FAF4F948b"
+      abi: Register
+      startBlock: 51631110
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - SupplierRegistered
+        - SupplierUnregistered
+        - UserRegistered
+        - UserUnregistered
+      abis:
+        - name: Register
+          file: ./abis/Register.json
+      eventHandlers:
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: SupplierRegistered(indexed address,indexed address,uint256)
+          handler: handleSupplierRegistered
+        - event: SupplierUnregistered(indexed address,indexed address,uint256)
+          handler: handleSupplierUnregistered
+        - event: UserRegistered(indexed address,indexed address,uint256)
+          handler: handleUserRegistered
+        - event: UserUnregistered(indexed address,indexed address,uint256)
+          handler: handleUserUnregistered
+      file: ./src/register.ts
+  - kind: ethereum
+    name: EnergyOracle
+    network: arbitrum-sepolia
+    source:
+      address: "0x1888C7F3fF23793ea0B462D319D9DF122f67f6b4"
+      abi: EnergyOracle
+      startBlock: 51631104
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - EnergyConsumptionRecorded
+        - EnergyConsumptionSent
+        - OutlierDetected
+        - Paused
+        - EnergyOracleRoleAdminChanged
+        - EnergyOracleRoleGranted
+        - EnergyOracleRoleRevoked
+        - Unpaused
+      abis:
+        - name: EnergyOracle
+          file: ./abis/EnergyOracle.json
+      eventHandlers:
+        - event: EnergyConsumptionRecorded(indexed address,indexed address,indexed
+            uint256,uint256,uint256)
+          handler: handleEnergyConsumptionRecorded
+        - event: EnergyConsumptionSent(indexed address,indexed address,indexed
+            uint256,uint256,uint256)
+          handler: handleEnergyConsumptionSent
+        - event: OutlierDetected(indexed address,indexed address,indexed uint256,uint256,uint256)
+          handler: handleOutlierDetected
+        - event: Paused(address)
+          handler: handlePaused
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: Unpaused(address)
+          handler: handleUnpaused
+      file: ./src/energy-oracle.ts
