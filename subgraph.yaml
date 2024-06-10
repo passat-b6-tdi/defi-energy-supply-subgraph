@@ -19,10 +19,8 @@ dataSources:
       language: wasm/assemblyscript
       file: ./src/mappings/register.ts
       entities:
-        - SupplierRegistered
-        - SupplierUnregistered
-        - UserRegistered
-        - UserUnregistered
+        - Supplier
+        - User
       abis:
         - name: Register
           file: ./abis/Register.json
@@ -48,9 +46,7 @@ dataSources:
       language: wasm/assemblyscript
       file: ./src/mappings/energy-oracle.ts
       entities:
-        - EnergyConsumptionRecorded
-        - EnergyConsumptionSent
-        - OutlierDetected
+        - EnergyConsumption
       abis:
         - name: EnergyOracle
           file: ./abis/EnergyOracle.json
