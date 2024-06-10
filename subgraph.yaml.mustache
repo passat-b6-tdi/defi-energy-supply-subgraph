@@ -1,18 +1,19 @@
-specVersion: 0.0.4
+specVersion: 0.0.1
 description: Defi Energy Supply. v0.0.1
 repository: https://github.com/b0gdaniy/defi-energy-supply-subgraph
 indexerHints:
   prune: auto
 schema:
-  file: ./schema.graphql
+  file: ./{{ schemaFileName }}
 dataSources:
+{{ #dataSources.Register }}
   - kind: ethereum/contract
     name: Register
-    network: arbitrum-sepolia
+    network: {{ network }}
     source:
-      address: "0x92aC6a4d4D3ddFb7eA2B32847D6Cf89FAF4F948b"
+      address: "{{ dataSources.Register.address }}"
       abi: Register
-      startBlock: 51631110
+      startBlock: {{ dataSources.Register.startBlock }}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -35,13 +36,15 @@ dataSources:
           handler: handleUserRegistered
         - event: UserUnregistered(indexed address,indexed address,uint256)
           handler: handleUserUnregistered
+{{ /dataSources.Register }}
+{{ #dataSources.EnergyOracle }}
   - kind: ethereum/contract
     name: EnergyOracle
-    network: arbitrum-sepolia
+    network: {{ network }}
     source:
-      address: "0x1888C7F3fF23793ea0B462D319D9DF122f67f6b4"
+      address: "{{ dataSources.EnergyOracle.address }}"
       abi: EnergyOracle
-      startBlock: 51631104
+      startBlock: {{ dataSources.EnergyOracle.startBlock }}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -61,3 +64,4 @@ dataSources:
         - event: EnergyConsumptionSent(indexed address,indexed address,indexed
             uint256,uint256,uint256)
           handler: handleEnergyConsumptionSent
+{{ /dataSources.EnergyOracle }}
