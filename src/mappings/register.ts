@@ -1,3 +1,4 @@
+import { BigInt, Bytes, store } from "@graphprotocol/graph-ts"
 import {
   SupplierRegistered as SupplierRegisteredEvent,
   SupplierUnregistered as SupplierUnregisteredEvent,
@@ -5,69 +6,50 @@ import {
   UserUnregistered as UserUnregisteredEvent
 } from "../types/Register/Register"
 import {
-  Supplier,
+  Supplier
+} from "../wrappers/supplier"
+import {
   User
-} from "../types/schema"
+} from "../wrappers/user"
 
 
 export function handleSupplierRegistered(event: SupplierRegisteredEvent): void {
-  let entity = new Supplier(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.sender = event.params.sender
-  entity.supplier = event.params.supplier
-  entity.timestamp = event.params.timestamp
+  let supplier = Supplier.loadOrCreate(event.params.supplierId.toHex())
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+  supplier.supplierAddress = event.params.supplier
+  supplier.amountOfUsers = event.params.amountOfUsers
 
-  entity.save()
+  supplier.save()
 }
 
 export function handleSupplierUnregistered(
   event: SupplierUnregisteredEvent
 ): void {
-  let entity = new Supplier(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.sender = event.params.sender
-  entity.supplier = event.params.supplier
-  entity.timestamp = event.params.timestamp
+  let supplier = Supplier.mustLoad(event.params.supplierId.toHex())
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+  supplier.supplierAddress = Bytes.fromHexString('')
+  supplier.amountOfUsers = BigInt.fromI32(0)
 
-  entity.save()
+  supplier.save()
+
+  store.remove('Supplier', supplier.id)
 }
 
 export function handleUserRegistered(event: UserRegisteredEvent): void {
-  let entity = new User(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.sender = event.params.sender
-  entity.user = event.params.user
-  entity.timestamp = event.params.timestamp
+  let user = User.loadOrCreate(event.params.user.toHex())
+  let supplier = Supplier.mustLoad(event.params.usersSupplierId.toHex())
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+  user.supplier = supplier.supplierAddress.toHex()
 
-  entity.save()
+  user.save()
 }
 
 export function handleUserUnregistered(event: UserUnregisteredEvent): void {
-  let entity = new User(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.sender = event.params.sender
-  entity.user = event.params.user
-  entity.timestamp = event.params.timestamp
+  let user = User.mustLoad(event.params.user.toHex())
 
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
+  user.supplier = ''
 
-  entity.save()
+  user.save()
+
+  store.remove('User', user.id)
 }
