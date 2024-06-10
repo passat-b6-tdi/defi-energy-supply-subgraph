@@ -1,7 +1,7 @@
 type EnergyConsumption @entity(immutable: true) {
-  id: ID! # Unique Identifier (Timestamp)
+  id: ID! # Unique Identifier (Associated User)
   user: User! # Associated User
   supplierId: BigInt! # User's Supplier Id
-  timestamp: BigInt! # Record Timestamp
+  lastUpdateTimestamp: BigInt! # Record Timestamp
   consumption: BigInt! # Consumption Value
 }

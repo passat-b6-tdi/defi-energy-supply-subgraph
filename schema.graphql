@@ -1,22 +1,20 @@
 type EnergyConsumption @entity(immutable: true) {
-  id: ID! # Unique Identifier (Timestamp)
+  id: ID! # Unique Identifier (Associated User)
   user: User! # Associated User
   supplierId: BigInt! # User's Supplier Id
-  timestamp: BigInt! # Record Timestamp
+  lastUpdateTimestamp: BigInt! # Record Timestamp
   consumption: BigInt! # Consumption Value
 }
 
 type Supplier @entity(immutable: true) {
   id: ID! # Unique Identifier (Supplier Id)
   supplierAddress: Bytes! # Supplier Address
-  supplierId: BigInt! # Supplier Id
   amountOfUsers: BigInt! # Number of Users Supplied
   users: [User!]! @derivedFrom(field: "supplier") # Supplier's Users
 }
 
 type User @entity(immutable: true) {
   id: ID! # Unique Identifier (User's Address)
-  user: Bytes! # User's Address
   supplier: Supplier! # User's Supplier
-  energyConsumptions: [EnergyConsumption!]! @derivedFrom(field: "user") # User's Energy Consumptions
+  energyConsumption: EnergyConsumption! @derivedFrom(field: "user") # User's Energy Consumptions
 }
