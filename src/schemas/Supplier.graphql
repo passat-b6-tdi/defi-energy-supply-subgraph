@@ -1,0 +1,19 @@
+type SupplierRegistered @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  supplier: Bytes! # address
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SupplierUnregistered @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  supplier: Bytes! # address
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
