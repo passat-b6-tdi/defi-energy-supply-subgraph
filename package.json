@@ -2,17 +2,32 @@
   "name": "defi-energy-supply-subgraph",
   "license": "UNLICENSED",
   "scripts": {
-    "codegen": "graph codegen",
+    "codegen:schema": "concat -o ./schema.graphql ./src/schemas/*.graphql",
+    "generate:config": "rimraf subgraph.yaml && mustache config/$NETWORK.json subgraph.yaml.mustache > subgraph.yaml",
+    "codegen": "rimraf src/types/ && graph codegen --output-dir src/types/",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ defi-energy-supply-subgraph",
+    "init": "graph init --studio $SUBGRAPH_SLUG",
+    "auth": "graph auth --studio $DEPLOY_KEY",
+    "deploy:single": "graph deploy --studio $SUBGRAPH_SLUG -l $VERSION_LABEL",
+    "deploy": "yarn auth && yarn deploy:single",
+    "deploy:old": "graph deploy --node https://api.studio.thegraph.com/deploy/ defi-energy-supply-subgraph",
+    "dev": "docker-compose down && rimraf data && docker-compose up -d",
     "create-local": "graph create --node http://localhost:8020/ defi-energy-supply-subgraph",
     "remove-local": "graph remove --node http://localhost:8020/ defi-energy-supply-subgraph",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 defi-energy-supply-subgraph",
+    "_:generate:config": "env-cmd yarn generate:config",
+    "_:init": "env-cmd yarn init",
+    "_:deploy": "env-cmd yarn deploy",
     "test": "graph test"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.67.2",
-    "@graphprotocol/graph-ts": "0.32.0"
+    "@graphprotocol/graph-ts": "0.32.0",
+    "env-cmd": "^10.1.0",
+    "mustache": "^4.2.0"
   },
-  "devDependencies": { "matchstick-as": "0.5.0" }
+  "devDependencies": {
+    "matchstick-as": "0.5.0",
+    "concat-cli": "^4.0.0"
+  }
 }
