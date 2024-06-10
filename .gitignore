@@ -1,1 +1,11 @@
-node_modules
+build/
+node_modules/
+src/types/
+subgraph.yaml
+.DS_STORE
+yarn-error.log
+.idea
+.vscode
+.env
+*.local.sh
+data
