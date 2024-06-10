@@ -1,14 +1,4 @@
-type UserRegistered @entity(immutable: true) {
-  id: Bytes!
-  sender: Bytes! # address
-  user: Bytes! # address
-  timestamp: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type UserUnregistered @entity(immutable: true) {
+type User @entity(immutable: true) {
   id: Bytes!
   sender: Bytes! # address
   user: Bytes! # address

@@ -1,4 +1,4 @@
-type EnergyConsumptionRecorded @entity(immutable: true) {
+type EnergyConsumption @entity(immutable: true) {
   id: Bytes!
   sender: Bytes! # address
   user: Bytes! # address
@@ -10,19 +10,7 @@ type EnergyConsumptionRecorded @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type EnergyConsumptionSent @entity(immutable: true) {
-  id: Bytes!
-  sender: Bytes! # address
-  user: Bytes! # address
-  supplierId: BigInt! # uint256
-  timestamp: BigInt! # uint256
-  consumption: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type SupplierRegistered @entity(immutable: true) {
+type Supplier @entity(immutable: true) {
   id: Bytes!
   sender: Bytes! # address
   supplier: Bytes! # address
@@ -32,27 +20,7 @@ type SupplierRegistered @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type SupplierUnregistered @entity(immutable: true) {
-  id: Bytes!
-  sender: Bytes! # address
-  supplier: Bytes! # address
-  timestamp: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type UserRegistered @entity(immutable: true) {
-  id: Bytes!
-  sender: Bytes! # address
-  user: Bytes! # address
-  timestamp: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type UserUnregistered @entity(immutable: true) {
+type User @entity(immutable: true) {
   id: Bytes!
   sender: Bytes! # address
   user: Bytes! # address

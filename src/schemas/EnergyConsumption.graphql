@@ -1,16 +1,4 @@
-type EnergyConsumptionRecorded @entity(immutable: true) {
-  id: Bytes!
-  sender: Bytes! # address
-  user: Bytes! # address
-  supplierId: BigInt! # uint256
-  timestamp: BigInt! # uint256
-  consumption: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type EnergyConsumptionSent @entity(immutable: true) {
+type EnergyConsumption @entity(immutable: true) {
   id: Bytes!
   sender: Bytes! # address
   user: Bytes! # address
