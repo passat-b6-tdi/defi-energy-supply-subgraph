@@ -9,7 +9,7 @@ import {
 import { Address, BigInt, Bytes } from "@graphprotocol/graph-ts"
 import { EnergyConsumptionRecorded } from "../generated/schema"
 import { EnergyConsumptionRecorded as EnergyConsumptionRecordedEvent } from "../generated/EnergyOracle/EnergyOracle"
-import { handleEnergyConsumptionRecorded } from "../src/energy-oracle"
+import { handleEnergyConsumptionRecorded } from "../src/mappings/energy-oracle"
 import { createEnergyConsumptionRecordedEvent } from "./energy-oracle-utils"
 
 // Tests structure (matchstick-as >=0.5.0)

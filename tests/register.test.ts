@@ -9,7 +9,7 @@ import {
 import { Bytes, Address, BigInt } from "@graphprotocol/graph-ts"
 import { RoleAdminChanged } from "../generated/schema"
 import { RoleAdminChanged as RoleAdminChangedEvent } from "../generated/Register/Register"
-import { handleRoleAdminChanged } from "../src/register"
+import { handleRoleAdminChanged } from "../src/mappings/register"
 import { createRoleAdminChangedEvent } from "./register-utils"
 
 // Tests structure (matchstick-as >=0.5.0)
