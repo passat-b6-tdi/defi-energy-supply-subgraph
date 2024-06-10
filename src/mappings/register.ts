@@ -6,7 +6,7 @@ import {
   SupplierUnregistered as SupplierUnregisteredEvent,
   UserRegistered as UserRegisteredEvent,
   UserUnregistered as UserUnregisteredEvent
-} from "../generated/Register/Register"
+} from "../../generated/Register/Register"
 import {
   RoleAdminChanged,
   RoleGranted,
@@ -15,7 +15,7 @@ import {
   SupplierUnregistered,
   UserRegistered,
   UserUnregistered
-} from "../generated/schema"
+} from "../../generated/schema"
 
 export function handleRoleAdminChanged(event: RoleAdminChangedEvent): void {
   let entity = new RoleAdminChanged(

@@ -7,7 +7,7 @@ import {
   RoleGranted as RoleGrantedEvent,
   RoleRevoked as RoleRevokedEvent,
   Unpaused as UnpausedEvent,
-} from "../generated/EnergyOracle/EnergyOracle"
+} from "../../generated/EnergyOracle/EnergyOracle"
 import {
   EnergyConsumptionRecorded,
   EnergyConsumptionSent,
@@ -17,7 +17,7 @@ import {
   RoleGranted,
   RoleRevoked,
   Unpaused,
-} from "../generated/schema"
+} from "../../generated/schema"
 
 export function handleEnergyConsumptionRecorded(
   event: EnergyConsumptionRecordedEvent,
