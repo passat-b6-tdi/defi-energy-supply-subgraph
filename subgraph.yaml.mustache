@@ -26,13 +26,13 @@ dataSources:
         - name: Register
           file: ./abis/Register.json
       eventHandlers:
-        - event: SupplierRegistered(indexed address,indexed address,uint256)
+        - event: SupplierRegistered(indexed address,indexed address,indexed uint256,uint256,uint256)
           handler: handleSupplierRegistered
-        - event: SupplierUnregistered(indexed address,indexed address,uint256)
+        - event: SupplierUnregistered(indexed address,indexed address,indexed uint256,uint256)
           handler: handleSupplierUnregistered
-        - event: UserRegistered(indexed address,indexed address,uint256)
+        - event: UserRegistered(indexed address,indexed address,indexed uint256,uint256)
           handler: handleUserRegistered
-        - event: UserUnregistered(indexed address,indexed address,uint256)
+        - event: UserUnregistered(indexed address,indexed address,indexed uint256,uint256)
           handler: handleUserUnregistered
 {{ /dataSources.Register }}
 {{ #dataSources.EnergyOracle }}
@@ -54,10 +54,8 @@ dataSources:
         - name: EnergyOracle
           file: ./abis/EnergyOracle.json
       eventHandlers:
-        - event: EnergyConsumptionRecorded(indexed address,indexed address,indexed
-            uint256,uint256,uint256)
+        - event: EnergyConsumptionRecorded(indexed address,indexed address,indexed uint256,uint256,uint256)
           handler: handleEnergyConsumptionRecorded
-        - event: EnergyConsumptionSent(indexed address,indexed address,indexed
-            uint256,uint256,uint256)
+        - event: EnergyConsumptionSent(indexed address,indexed address,indexed uint256,uint256,uint256)
           handler: handleEnergyConsumptionSent
 {{ /dataSources.EnergyOracle }}
