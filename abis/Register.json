@@ -523,11 +523,6 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "supplier",
-        "type": "address"
-      },
-      {
         "internalType": "uint256",
         "name": "supplierId",
         "type": "uint256"
