@@ -1,4 +1,4 @@
-type EnergyConsumption @entity(immutable: true) {
+type EnergyConsumption @entity {
   id: ID! # Unique Identifier (Associated User)
   user: User! # Associated User
   supplierId: BigInt! # User's Supplier Id

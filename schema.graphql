@@ -1,4 +1,4 @@
-type EnergyConsumption @entity(immutable: true) {
+type EnergyConsumption @entity {
   id: ID! # Unique Identifier (Associated User)
   user: User! # Associated User
   supplierId: BigInt! # User's Supplier Id
@@ -6,14 +6,14 @@ type EnergyConsumption @entity(immutable: true) {
   consumption: BigInt! # Consumption Value
 }
 
-type Supplier @entity(immutable: true) {
+type Supplier @entity {
   id: ID! # Unique Identifier (Supplier Id)
   supplierAddress: Bytes! # Supplier Address
   amountOfUsers: BigInt! # Number of Users Supplied
   users: [User!]! @derivedFrom(field: "supplier") # Supplier's Users
 }
 
-type User @entity(immutable: true) {
+type User @entity {
   id: ID! # Unique Identifier (User's Address)
   supplier: Supplier! # User's Supplier
   energyConsumption: EnergyConsumption! @derivedFrom(field: "user") # User's Energy Consumptions
