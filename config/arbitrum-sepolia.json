@@ -1,0 +1,14 @@
+{
+  "network": "arbitrum-sepolia",
+  "schemaFileName": "schema.graphql",
+  "dataSources": {
+    "Register": {
+      "address": "0x92aC6a4d4D3ddFb7eA2B32847D6Cf89FAF4F948b",
+      "startBlock": 51631110
+    },
+    "EnergyOracle": {
+      "address": "0x1888C7F3fF23793ea0B462D319D9DF122f67f6b4",
+      "startBlock": 51631104
+    }
+  }
+}
