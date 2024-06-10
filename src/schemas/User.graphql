@@ -1,9 +1,6 @@
 type User @entity(immutable: true) {
-  id: Bytes!
-  sender: Bytes! # address
-  user: Bytes! # address
-  timestamp: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+  id: ID! # Unique Identifier (User's Address)
+  user: Bytes! # User's Address
+  supplier: Supplier! # User's Supplier
+  energyConsumptions: [EnergyConsumption!]! @derivedFrom(field: "user") # User's Energy Consumptions
 }

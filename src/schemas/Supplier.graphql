@@ -1,9 +1,7 @@
 type Supplier @entity(immutable: true) {
-  id: Bytes!
-  sender: Bytes! # address
-  supplier: Bytes! # address
-  timestamp: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+  id: ID! # Unique Identifier (Supplier Id)
+  supplierAddress: Bytes! # Supplier Address
+  supplierId: BigInt! # Supplier Id
+  amountOfUsers: BigInt! # Number of Users Supplied
+  users: [User!]! @derivedFrom(field: "supplier") # Supplier's Users
 }

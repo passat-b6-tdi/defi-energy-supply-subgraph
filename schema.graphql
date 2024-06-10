@@ -1,31 +1,22 @@
 type EnergyConsumption @entity(immutable: true) {
-  id: Bytes!
-  sender: Bytes! # address
-  user: Bytes! # address
-  supplierId: BigInt! # uint256
-  timestamp: BigInt! # uint256
-  consumption: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+  id: ID! # Unique Identifier (Timestamp)
+  user: User! # Associated User
+  supplierId: BigInt! # User's Supplier Id
+  timestamp: BigInt! # Record Timestamp
+  consumption: BigInt! # Consumption Value
 }
 
 type Supplier @entity(immutable: true) {
-  id: Bytes!
-  sender: Bytes! # address
-  supplier: Bytes! # address
-  timestamp: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+  id: ID! # Unique Identifier (Supplier Id)
+  supplierAddress: Bytes! # Supplier Address
+  supplierId: BigInt! # Supplier Id
+  amountOfUsers: BigInt! # Number of Users Supplied
+  users: [User!]! @derivedFrom(field: "supplier") # Supplier's Users
 }
 
 type User @entity(immutable: true) {
-  id: Bytes!
-  sender: Bytes! # address
-  user: Bytes! # address
-  timestamp: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+  id: ID! # Unique Identifier (User's Address)
+  user: Bytes! # User's Address
+  supplier: Supplier! # User's Supplier
+  energyConsumptions: [EnergyConsumption!]! @derivedFrom(field: "user") # User's Energy Consumptions
 }
