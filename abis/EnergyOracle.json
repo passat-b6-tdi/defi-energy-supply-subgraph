@@ -34,17 +34,11 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "consumption",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
         "name": "timestamp",
         "type": "uint256"
       }
     ],
-    "name": "EnergyConsumptionRecorded",
+    "name": "EnergyConsumptionPaid",
     "type": "event"
   },
   {
@@ -81,7 +75,7 @@
         "type": "uint256"
       }
     ],
-    "name": "EnergyConsumptionSent",
+    "name": "EnergyConsumptionRecorded",
     "type": "event"
   },
   {
@@ -261,20 +255,10 @@
         "internalType": "uint256",
         "name": "supplierId",
         "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
       }
     ],
     "name": "energyConsumptions",
     "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
-      },
       {
         "internalType": "uint256",
         "name": "consumption",
@@ -392,11 +376,6 @@
       },
       {
         "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
         "name": "consumption",
         "type": "uint256"
       }
@@ -481,14 +460,8 @@
         "type": "uint256"
       }
     ],
-    "name": "updateEnergyConsumptionsAndGetResult",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "consumption",
-        "type": "uint256"
-      }
-    ],
+    "name": "updateEnergyConsumptions",
+    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   }

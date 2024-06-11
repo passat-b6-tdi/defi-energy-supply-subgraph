@@ -51,5 +51,5 @@ dataSources:
       eventHandlers:
         - event: EnergyConsumptionRecorded(indexed address,indexed address,indexed uint256,uint256,uint256)
           handler: handleEnergyConsumptionRecorded
-        - event: EnergyConsumptionSent(indexed address,indexed address,indexed uint256,uint256,uint256)
+        - event: EnergyConsumptionPaid(indexed address,indexed address,indexed uint256,uint256)
           handler: handleEnergyConsumptionSent

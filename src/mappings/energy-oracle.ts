@@ -1,6 +1,6 @@
 import {
   EnergyConsumptionRecorded as EnergyConsumptionRecordedEvent,
-  EnergyConsumptionSent as EnergyConsumptionSentEvent,
+  EnergyConsumptionPaid as EnergyConsumptionPaidEvent,
 } from "../types/EnergyOracle/EnergyOracle"
 import {
   User
@@ -8,6 +8,7 @@ import {
 import {
   EnergyConsumption
 } from "../wrappers/energy-oracle"
+import { BigInt } from "@graphprotocol/graph-ts"
 
 export function handleEnergyConsumptionRecorded(
   event: EnergyConsumptionRecordedEvent,
@@ -17,20 +18,20 @@ export function handleEnergyConsumptionRecorded(
   let consumption = EnergyConsumption.mustLoad(user.id)
 
   consumption.lastUpdateTimestamp = event.params.timestamp
-  consumption.consumption = consumption.consumption.plus(event.params.consumption)
+  consumption.consumption = event.params.consumption
 
   consumption.save()
 }
 
 export function handleEnergyConsumptionSent(
-  event: EnergyConsumptionSentEvent,
+  event: EnergyConsumptionPaidEvent,
 ): void {
   const user = User.mustLoad(event.params.whoseConsumption.toHex())
 
   let consumption = EnergyConsumption.mustLoad(user.id)
 
   consumption.lastUpdateTimestamp = event.params.timestamp
-  consumption.consumption = consumption.consumption.minus(event.params.consumption)
+  consumption.consumption = BigInt.fromI32(0)
 
   consumption.save()
 }

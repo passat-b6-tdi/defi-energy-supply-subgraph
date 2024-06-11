@@ -3,12 +3,12 @@
   "schemaFileName": "schema.graphql",
   "dataSources": {
     "Register": {
-      "address": "0xAbB1CeFB5f90Ce1114af146606101a795D43d5a1",
-      "startBlock": 53277482
+      "address": "0xf646325Eb8E44Ed8Dfc07074ea1667455521C4f7",
+      "startBlock": 53651286
     },
     "EnergyOracle": {
-      "address": "0xb3b2e4820BCC39abd12e2689b4c9F3c27D352DC9",
-      "startBlock": 53277476
+      "address": "0x22Ab3c7Bc02695D3B119A6cf0224f00354E2Ee7f",
+      "startBlock": 53651279
     }
   }
 }

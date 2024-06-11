@@ -1,8 +1,20 @@
+# Run py script
+
 ```
 pip install prometheus_client requests
 
 python3.9 prometheus.py
 ```
+
+# Run Grafana
+
+```
+brew install grafana
+
+brew services start grafana
+```
+
+# Run Prometheus
 
 ```
 brew install prometheus
