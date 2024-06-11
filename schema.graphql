@@ -16,5 +16,5 @@ type Supplier @entity {
 type User @entity {
   id: ID! # Unique Identifier (User's Address)
   supplier: Supplier! # User's Supplier
-  energyConsumption: EnergyConsumption! @derivedFrom(field: "user") # User's Energy Consumptions
+  energyConsumption: EnergyConsumption @derivedFrom(field: "user") # User's Energy Consumptions
 }
