@@ -14,10 +14,8 @@ export function handleEnergyConsumptionRecorded(
 ): void {
   const user = User.mustLoad(event.params.whoseConsumption.toHex())
 
-  let consumption = EnergyConsumption.loadOrCreate(user.id)
+  let consumption = EnergyConsumption.mustLoad(user.id)
 
-  consumption.user = event.params.whoseConsumption.toHex()
-  consumption.supplierId = event.params.supplierId
   consumption.lastUpdateTimestamp = event.params.timestamp
   consumption.consumption = consumption.consumption.plus(event.params.consumption)
 

@@ -11,6 +11,7 @@ import {
 import {
   User
 } from "../wrappers/user"
+import { EnergyConsumption } from "../wrappers/energy-oracle"
 
 
 export function handleSupplierRegistered(event: SupplierRegisteredEvent): void {
@@ -36,20 +37,34 @@ export function handleSupplierUnregistered(
 }
 
 export function handleUserRegistered(event: UserRegisteredEvent): void {
-  let user = User.loadOrCreate(event.params.user.toHex())
   let supplier = Supplier.mustLoad(event.params.usersSupplierId.toHex())
+  let user = User.loadOrCreate(event.params.user.toHex())
+  let consumption = EnergyConsumption.loadOrCreate(event.params.user.toHex())
 
-  user.supplier = supplier.supplierAddress.toHex()
+  user.supplier = supplier.id
+  consumption.user = user.id
+  consumption.supplierId = event.params.usersSupplierId
+  consumption.lastUpdateTimestamp = event.block.timestamp
+  consumption.consumption = BigInt.fromI32(0)
 
   user.save()
+  consumption.save()
 }
 
 export function handleUserUnregistered(event: UserUnregisteredEvent): void {
   let user = User.mustLoad(event.params.user.toHex())
+  let consumption = EnergyConsumption.mustLoad(user.id)
 
   user.supplier = ''
 
+  consumption.user = ''
+  consumption.supplierId = BigInt.fromI32(0)
+  consumption.lastUpdateTimestamp = BigInt.fromI32(0)
+  consumption.consumption = BigInt.fromI32(0)
+
   user.save()
+  consumption.save()
 
   store.remove('User', user.id)
+  store.remove('EnergyConsumption', consumption.id)
 }
