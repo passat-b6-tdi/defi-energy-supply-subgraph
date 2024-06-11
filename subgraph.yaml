@@ -1,4 +1,4 @@
-specVersion: 0.0.4
+specVersion: 0.0.1
 description: Defi Energy Supply. v0.0.1
 repository: https://github.com/b0gdaniy/defi-energy-supply-subgraph
 schema:
@@ -8,9 +8,9 @@ dataSources:
     name: Register
     network: arbitrum-sepolia
     source:
-      address: "0xAbB1CeFB5f90Ce1114af146606101a795D43d5a1"
+      address: "0xf646325Eb8E44Ed8Dfc07074ea1667455521C4f7"
       abi: Register
-      startBlock: 53277482
+      startBlock: 53651286
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -35,9 +35,9 @@ dataSources:
     name: EnergyOracle
     network: arbitrum-sepolia
     source:
-      address: "0xb3b2e4820BCC39abd12e2689b4c9F3c27D352DC9"
+      address: "0x22Ab3c7Bc02695D3B119A6cf0224f00354E2Ee7f"
       abi: EnergyOracle
-      startBlock: 53277476
+      startBlock: 53651279
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
