@@ -248,7 +248,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "user",
+        "name": "consumer",
         "type": "address"
       },
       {
@@ -262,6 +262,30 @@
       {
         "internalType": "uint256",
         "name": "consumption",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "supplier",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "supplierId",
+        "type": "uint256"
+      }
+    ],
+    "name": "energyProductions",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "production",
         "type": "uint256"
       }
     ],
@@ -366,7 +390,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "user",
+        "name": "consumer",
         "type": "address"
       },
       {
@@ -381,6 +405,29 @@
       }
     ],
     "name": "recordEnergyConsumption",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "supplier",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "supplierId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "production",
+        "type": "uint256"
+      }
+    ],
+    "name": "recordEnergyProduction",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -451,7 +498,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "user",
+        "name": "consumer",
         "type": "address"
       },
       {

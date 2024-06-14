@@ -15,6 +15,80 @@
     "inputs": [
       {
         "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "consumer",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "supplierId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "supplierAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "ConsumerRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "consumer",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "supplierId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "supplierAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "ConsumerUnregistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
         "internalType": "bytes32",
         "name": "role",
         "type": "bytes32"
@@ -109,12 +183,6 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "amountOfUsers",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
         "name": "timestamp",
         "type": "uint256"
       }
@@ -154,68 +222,6 @@
     "type": "event"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "usersSupplierId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
-      }
-    ],
-    "name": "UserRegistered",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "usersSupplierId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
-      }
-    ],
-    "name": "UserUnregistered",
-    "type": "event"
-  },
-  {
     "inputs": [],
     "name": "DEFAULT_ADMIN_ROLE",
     "outputs": [
@@ -252,6 +258,19 @@
     "name": "changeManager",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "currentSupplierId",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -410,16 +429,16 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "user",
+        "name": "consumer",
         "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "usersSupplierId",
+        "name": "supplierId",
         "type": "uint256"
       }
     ],
-    "name": "registerElectricityUser",
+    "name": "registerElectricityConsumer",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -430,16 +449,6 @@
         "internalType": "address",
         "name": "supplier",
         "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "supplierId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "amountOfUsers",
-        "type": "uint256"
       }
     ],
     "name": "registerSupplier",
@@ -506,16 +515,16 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "user",
+        "name": "consumer",
         "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "usersSupplierId",
+        "name": "supplierId",
         "type": "uint256"
       }
     ],
-    "name": "unRegisterElectricityUser",
+    "name": "unRegisterElectricityConsumer",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

@@ -24,13 +24,13 @@ dataSources:
         - name: Register
           file: ./abis/Register.json
       eventHandlers:
-        - event: SupplierRegistered(indexed address,indexed address,indexed uint256,uint256,uint256)
+        - event: SupplierRegistered(indexed address,indexed address,indexed uint256,uint256)
           handler: handleSupplierRegistered
         - event: SupplierUnregistered(indexed address,indexed address,indexed uint256,uint256)
           handler: handleSupplierUnregistered
-        - event: UserRegistered(indexed address,indexed address,indexed uint256,uint256)
+        - event: ConsumerRegistered(indexed address,indexed address,indexed uint256,address,uint256)
           handler: handleUserRegistered
-        - event: UserUnregistered(indexed address,indexed address,indexed uint256,uint256)
+        - event: ConsumerUnregistered(indexed address,indexed address,indexed uint256,address,uint256)
           handler: handleUserUnregistered
 {{ /dataSources.Register }}
 {{ #dataSources.EnergyOracle }}
