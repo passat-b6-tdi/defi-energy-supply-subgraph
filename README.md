@@ -34,7 +34,7 @@ cd prometheus-2.53.0-rc.1.linux-amd64
 - In terminal:
 
 ```
-ssh -i "/path/to/PrometheusKey.pem" ec2-user@ec2-15-188-62-72.eu-west-3.compute.amazonaws.com
+ssh -i "/path/to/PrometheusKey.pem" ec2-user@ec2-52-47-197-248.eu-west-3.compute.amazonaws.com
 ```
 
 - In AWS:
