@@ -5,8 +5,8 @@ export class Supplier extends SupplierEntity {
 	constructor(id: string) {
 		super(id)
 
+		this.supplierId = BigInt.fromI32(0)
 		this.supplierAddress = Bytes.fromHexString('')
-		this.amountOfUsers = BigInt.fromI32(0)
 	}
 
 	static loadOrCreate(supplierId: string): Supplier {

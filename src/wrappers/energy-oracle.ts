@@ -6,27 +6,26 @@ export class EnergyConsumption extends EnergyConsumptionEntity {
 	constructor(id: string) {
 		super(id)
 
-		this.user = ''
-		this.supplierId = BigInt.fromI32(0)
+		this.consumer = ''
 		this.lastUpdateTimestamp = BigInt.fromI32(0)
 		this.consumption = BigInt.fromI32(0)
 	}
 
-	static loadOrCreate(userAddress: string): EnergyConsumption {
-		let entity = EnergyConsumption.load(userAddress)
+	static loadOrCreate(consumerAddress: string): EnergyConsumption {
+		let entity = EnergyConsumption.load(consumerAddress)
 
 		if (entity === null) {
-			entity = new EnergyConsumption(userAddress)
+			entity = new EnergyConsumption(consumerAddress)
 		}
 
 		return changetype<EnergyConsumption>(entity)
 	}
 
-	static mustLoad(userAddress: string): EnergyConsumption {
-		let entity = EnergyConsumption.load(userAddress)
+	static mustLoad(consumerAddress: string): EnergyConsumption {
+		let entity = EnergyConsumption.load(consumerAddress)
 
 		if (entity === null) {
-			log.critical('EnergyConsumption not found: {}', [userAddress])
+			log.critical('EnergyConsumption not found: {}', [consumerAddress])
 		}
 
 		return changetype<EnergyConsumption>(entity)
