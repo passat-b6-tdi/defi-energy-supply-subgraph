@@ -1,7 +1,6 @@
 type EnergyConsumption @entity {
-  id: ID! # Unique Identifier (Associated User)
-  user: User! # Associated User
-  supplierId: BigInt! # User's Supplier Id
+  id: ID! # Unique Identifier (Consumer's Address + Supplier Id)
+  consumer: Consumer! # Associated Consumer
   lastUpdateTimestamp: BigInt! # Record Timestamp
   consumption: BigInt! # Consumption Value
 }

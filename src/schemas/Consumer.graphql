@@ -1,0 +1,6 @@
+type Consumer @entity {
+  id: ID! # Unique Identifier (Consumer's Address + Supplier Id)
+  consumerAddress: Bytes! # Consumer's Address
+  supplier: Supplier! # Consumer's Supplier
+  energyConsumption: EnergyConsumption @derivedFrom(field: "consumer") # Consumer's Energy Consumptions
+}

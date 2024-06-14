@@ -1,20 +1,20 @@
+type Consumer @entity {
+  id: ID! # Unique Identifier (Consumer's Address + Supplier Id)
+  consumerAddress: Bytes! # Consumer's Address
+  supplier: Supplier! # Consumer's Supplier
+  energyConsumption: EnergyConsumption @derivedFrom(field: "consumer") # Consumer's Energy Consumptions
+}
+
 type EnergyConsumption @entity {
-  id: ID! # Unique Identifier (Associated User)
-  user: User! # Associated User
-  supplierId: BigInt! # User's Supplier Id
+  id: ID! # Unique Identifier (Consumer's Address + Supplier Id)
+  consumer: Consumer! # Associated Consumer
   lastUpdateTimestamp: BigInt! # Record Timestamp
   consumption: BigInt! # Consumption Value
 }
 
 type Supplier @entity {
-  id: ID! # Unique Identifier (Supplier Id)
-  supplierAddress: Bytes! # Supplier Address
-  amountOfUsers: BigInt! # Number of Users Supplied
-  users: [User!]! @derivedFrom(field: "supplier") # Supplier's Users
-}
-
-type User @entity {
-  id: ID! # Unique Identifier (User's Address)
-  supplier: Supplier! # User's Supplier
-  energyConsumption: EnergyConsumption @derivedFrom(field: "user") # User's Energy Consumptions
+  id: ID! # Unique Identifier (Supplier's Address + Supplier Id)
+  supplierId: BigInt! # SuplierId
+  supplierAddress: Bytes! # Supplier's Address
+  consumers: [Consumer!]! @derivedFrom(field: "supplier") # Supplier's Consumers
 }

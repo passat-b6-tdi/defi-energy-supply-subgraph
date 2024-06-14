@@ -1,6 +1,6 @@
 type Supplier @entity {
-  id: ID! # Unique Identifier (Supplier Id)
-  supplierAddress: Bytes! # Supplier Address
-  amountOfUsers: BigInt! # Number of Users Supplied
-  users: [User!]! @derivedFrom(field: "supplier") # Supplier's Users
+  id: ID! # Unique Identifier (Supplier's Address + Supplier Id)
+  supplierId: BigInt! # SuplierId
+  supplierAddress: Bytes! # Supplier's Address
+  consumers: [Consumer!]! @derivedFrom(field: "supplier") # Supplier's Consumers
 }
