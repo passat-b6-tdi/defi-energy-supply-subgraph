@@ -25,7 +25,7 @@ export function handleSupplierRegistered(event: SupplierRegisteredEvent): void {
   supplier.supplierAddress = supplierAddress
 
   let production = EnergyProduction.loadOrCreate(supplier.id)
-  production.supplier = supplierAddress.toHex()
+  production.supplier = supplier.id
   production.lastUpdateTimestamp = event.block.timestamp
   production.production = BigInt.fromI32(0)
 
