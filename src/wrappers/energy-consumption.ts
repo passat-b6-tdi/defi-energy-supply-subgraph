@@ -1,4 +1,4 @@
-import { BigInt, Bytes, log } from '@graphprotocol/graph-ts'
+import { BigInt, log } from '@graphprotocol/graph-ts'
 
 import { EnergyConsumption as EnergyConsumptionEntity } from '../types/schema'
 
@@ -11,21 +11,21 @@ export class EnergyConsumption extends EnergyConsumptionEntity {
 		this.consumption = BigInt.fromI32(0)
 	}
 
-	static loadOrCreate(consumerAddress: string): EnergyConsumption {
-		let entity = EnergyConsumption.load(consumerAddress)
+	static loadOrCreate(id: string): EnergyConsumption {
+		let entity = EnergyConsumption.load(id)
 
 		if (entity === null) {
-			entity = new EnergyConsumption(consumerAddress)
+			entity = new EnergyConsumption(id)
 		}
 
 		return changetype<EnergyConsumption>(entity)
 	}
 
-	static mustLoad(consumerAddress: string): EnergyConsumption {
-		let entity = EnergyConsumption.load(consumerAddress)
+	static mustLoad(id: string): EnergyConsumption {
+		let entity = EnergyConsumption.load(id)
 
 		if (entity === null) {
-			log.critical('EnergyConsumption not found: {}', [consumerAddress])
+			log.critical('EnergyConsumption not found: {}', [id])
 		}
 
 		return changetype<EnergyConsumption>(entity)
