@@ -8,9 +8,9 @@ dataSources:
     name: Register
     network: arbitrum-sepolia
     source:
-      address: "0xf646325Eb8E44Ed8Dfc07074ea1667455521C4f7"
+      address: "0xf90f06AfD2AE7EDA5a7189aA5b40329b4EF50faf"
       abi: Register
-      startBlock: 53651286
+      startBlock: 56554557
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -35,15 +35,16 @@ dataSources:
     name: EnergyOracle
     network: arbitrum-sepolia
     source:
-      address: "0x22Ab3c7Bc02695D3B119A6cf0224f00354E2Ee7f"
+      address: "0x5BE42a225cde40dc79Bf07DE6898877DCae670fd"
       abi: EnergyOracle
-      startBlock: 53651279
+      startBlock: 56554551
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       file: ./src/mappings/energy-oracle.ts
       entities:
+        - EnergyProduction
         - EnergyConsumption
       abis:
         - name: EnergyOracle
@@ -53,3 +54,5 @@ dataSources:
           handler: handleEnergyConsumptionRecorded
         - event: EnergyConsumptionPaid(indexed address,indexed address,indexed uint256,uint256)
           handler: handleEnergyConsumptionSent
+        - event: EnergyProductionRecorded(indexed address,indexed address,indexed uint256,uint256,uint256)
+          handler: handleEnergyProductionRecorded
