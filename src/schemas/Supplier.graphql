@@ -3,4 +3,5 @@ type Supplier @entity {
   supplierId: BigInt! # SuplierId
   supplierAddress: Bytes! # Supplier's Address
   consumers: [Consumer!]! @derivedFrom(field: "supplier") # Supplier's Consumers
+  energyProduction: EnergyProduction! @derivedFrom(field: "supplier") # Supplier's Production
 }
