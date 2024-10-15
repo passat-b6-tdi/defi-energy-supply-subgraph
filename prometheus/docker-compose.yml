@@ -1,0 +1,21 @@
+version: "3"
+services:
+  prometheus:
+    build:
+      context: .
+      dockerfile: Dockerfile-prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  python-script:
+    build:
+      context: .
+      dockerfile: Dockerfile-python
+    volumes:
+      - ./prometheus.py:/app/prometheus.py
+    expose:
+      - "8000"
+    depends_on:
+      - prometheus

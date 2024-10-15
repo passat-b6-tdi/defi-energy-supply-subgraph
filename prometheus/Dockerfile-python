@@ -1,0 +1,17 @@
+# Use a base image with Python3 support
+FROM python:3.9-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Install required Python packages
+RUN pip install prometheus_client requests
+
+# Copy the Python script to the container
+COPY prometheus.py /app/prometheus.py
+
+# Expose the metrics port
+EXPOSE 8000
+
+# Run the Python script
+CMD ["python3", "/app/prometheus.py"]
