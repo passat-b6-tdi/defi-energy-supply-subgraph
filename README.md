@@ -93,17 +93,7 @@ prometheus --config.file=prometheus.yml --web.listen-address=:9091
 docker network create monitoring-network
 ```
 
-## Run Grafana:
-
-```
-cd grafana/
-
-docker build -t grafana-server .
-
-docker run -d --name=grafana --network=monitoring-network -p 3000:3000 grafana-server
-```
-
-## Run Grafana:
+## Run Prometheus and Grafana:
 
 ```
 cd prometheus/
