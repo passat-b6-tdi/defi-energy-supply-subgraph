@@ -1,21 +1,43 @@
 version: "3"
+networks:
+  monitoring-network:
+    external: true
+
 services:
   prometheus:
     build:
       context: .
       dockerfile: Dockerfile-prometheus
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
+    networks:
+      - monitoring-network
 
   python-script:
     build:
       context: .
       dockerfile: Dockerfile-python
     volumes:
-      - ./prometheus.py:/app/prometheus.py
+      - ./prometheus/prometheus.py:/app/prometheus.py
     expose:
       - "8000"
     depends_on:
       - prometheus
+    networks:
+      - monitoring-network
+
+  grafana:
+    build:
+      context: .
+      dockerfile: Dockerfile-grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - monitoring-network
+    volumes:
+      - grafana-data:/var/lib/grafana
+
+volumes:
+  grafana-data:
