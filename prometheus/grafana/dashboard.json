@@ -1,0 +1,58 @@
+{
+  "id": null,
+  "title": "Energy Metrics Dashboard",
+  "uid": "energy-dashboard",
+  "timezone": "browser",
+  "version": 1,
+  "schemaVersion": 16,
+  "refresh": "10s",
+  "panels": [
+    {
+      "title": "Total Energy Consumption",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "total_energy_consumption",
+          "legendFormat": "Total Energy Consumption",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 }
+    },
+    {
+      "title": "Total Energy Production",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "total_energy_production",
+          "legendFormat": "Total Energy Production",
+          "refId": "B"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 }
+    },
+    {
+      "title": "Total Consumers and Suppliers",
+      "type": "stat",
+      "targets": [
+        {
+          "expr": "total_consumers",
+          "legendFormat": "Total Consumers",
+          "refId": "C"
+        },
+        {
+          "expr": "total_suppliers",
+          "legendFormat": "Total Suppliers",
+          "refId": "D"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 9, "w": 24, "h": 8 }
+    }
+  ],
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": []
+  }
+}
