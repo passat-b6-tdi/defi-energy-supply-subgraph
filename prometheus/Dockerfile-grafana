@@ -1,0 +1,17 @@
+# Use the official Grafana image as the base
+FROM grafana/grafana:latest
+
+# Expose Grafana's default port
+EXPOSE 3000
+
+# Create provisioning folders and copy the custom datasource and dashboard files
+USER root
+
+RUN mkdir -p /etc/grafana/provisioning/datasources /etc/grafana/provisioning/dashboards
+
+COPY /grafana/datasource.yaml /etc/grafana/provisioning/datasources/datasource.yaml
+COPY /grafana/dashboard_provisioning.yaml /etc/grafana/provisioning/dashboards/dashboard_provisioning.yaml
+COPY /grafana/dashboard.json /etc/grafana/provisioning/dashboards/dashboard.json
+
+# Start Grafana
+CMD ["/run.sh"]

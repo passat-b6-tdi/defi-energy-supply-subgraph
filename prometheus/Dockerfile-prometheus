@@ -5,7 +5,7 @@ FROM prom/prometheus
 WORKDIR /etc/prometheus
 
 # Copy the Prometheus configuration file
-COPY prometheus.yml /etc/prometheus/prometheus.yml
+COPY /prometheus/prometheus.yml /etc/prometheus/prometheus.yml
 
 # Expose the Prometheus port
 EXPOSE 9090

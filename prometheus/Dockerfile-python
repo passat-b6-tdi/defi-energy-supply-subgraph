@@ -8,7 +8,7 @@ WORKDIR /app
 RUN pip install prometheus_client requests
 
 # Copy the Python script to the container
-COPY prometheus.py /app/prometheus.py
+COPY /prometheus/prometheus.py /app/prometheus.py
 
 # Expose the metrics port
 EXPOSE 8000
