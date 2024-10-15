@@ -96,7 +96,7 @@ docker network create monitoring-network
 ## Run Prometheus and Grafana:
 
 ```
-cd prometheus/
+cd grafana-prometheus/
 
 docker-compose up --build
 ```
