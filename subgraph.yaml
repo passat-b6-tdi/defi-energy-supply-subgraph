@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Register
-    network: arbitrum-sepolia
+    network: base-sepolia
     source:
-      address: "0xf90f06AfD2AE7EDA5a7189aA5b40329b4EF50faf"
+      address: "0x6A7a5178299f3257d7f35343719F6C577dE4A0f3"
       abi: Register
-      startBlock: 56554557
+      startBlock: 42099207
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -38,11 +38,11 @@ dataSources:
           handler: handleUserUnregistered
   - kind: ethereum/contract
     name: EnergyOracle
-    network: arbitrum-sepolia
+    network: base-sepolia
     source:
-      address: "0x5BE42a225cde40dc79Bf07DE6898877DCae670fd"
+      address: "0xb7a26DC03a9BB0d31b8770e4Fb88027AD705Ba06"
       abi: EnergyOracle
-      startBlock: 56554551
+      startBlock: 42099209
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
