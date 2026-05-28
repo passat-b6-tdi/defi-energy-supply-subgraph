@@ -18,12 +18,17 @@ dataSources:
       language: wasm/assemblyscript
       file: ./src/mappings/register.ts
       entities:
+        - Producer
         - Supplier
-        - User
+        - Consumer
       abis:
         - name: Register
           file: ./abis/Register.json
       eventHandlers:
+        - event: ProducerRegistered(indexed address,indexed address,indexed uint256,uint256)
+          handler: handleProducerRegistered
+        - event: ProducerUnregistered(indexed address,indexed uint256,uint256)
+          handler: handleProducerUnregistered
         - event: SupplierRegistered(indexed address,indexed address,indexed uint256,uint256)
           handler: handleSupplierRegistered
         - event: SupplierUnregistered(indexed address,indexed uint256,uint256)
