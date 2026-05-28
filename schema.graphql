@@ -1,31 +1,31 @@
-type Consumer @entity {
+type Consumer @entity(immutable: false) {
   id: ID! # Unique Identifier (Consumer's Address + Supplier Id)
   consumerAddress: Bytes! # Consumer's Address
   supplier: Supplier! # Consumer's Supplier
   energyConsumption: EnergyConsumption @derivedFrom(field: "consumer") # Consumer's Energy Consumptions
 }
 
-type EnergyConsumption @entity {
+type EnergyConsumption @entity(immutable: false) {
   id: ID! # Unique Identifier (Consumer's Address + Supplier Id)
   consumer: Consumer! # Associated Consumer
   lastUpdateTimestamp: BigInt! # Record Timestamp
   consumption: BigInt! # Consumption Value
 }
 
-type EnergyProduction @entity {
+type EnergyProduction @entity(immutable: false) {
   id: ID! # Unique Identifier (Supplier Id)
   supplier: Supplier! # Associated Supplier
   lastUpdateTimestamp: BigInt! # Record Timestamp
   production: BigInt! # Consumption Value
 }
 
-type Producer @entity {
+type Producer @entity(immutable: false) {
   id: ID! # Unique Identifier (producerId hex)
   producerId: BigInt! # Producer Id
   producerAddress: Bytes! # Producer's Address
 }
 
-type Supplier @entity {
+type Supplier @entity(immutable: false) {
   id: ID! # Unique Identifier (Supplier Id)
   supplierId: BigInt! # SuplierId
   supplierAddress: Bytes! # Supplier's Address

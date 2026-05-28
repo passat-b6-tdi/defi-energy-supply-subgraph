@@ -1,4 +1,4 @@
-type EnergyProduction @entity {
+type EnergyProduction @entity(immutable: false) {
   id: ID! # Unique Identifier (Supplier Id)
   supplier: Supplier! # Associated Supplier
   lastUpdateTimestamp: BigInt! # Record Timestamp

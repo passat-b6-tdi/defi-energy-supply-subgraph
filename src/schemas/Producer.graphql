@@ -1,4 +1,4 @@
-type Producer @entity {
+type Producer @entity(immutable: false) {
   id: ID! # Unique Identifier (producerId hex)
   producerId: BigInt! # Producer Id
   producerAddress: Bytes! # Producer's Address

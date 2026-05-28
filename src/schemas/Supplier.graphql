@@ -1,4 +1,4 @@
-type Supplier @entity {
+type Supplier @entity(immutable: false) {
   id: ID! # Unique Identifier (Supplier Id)
   supplierId: BigInt! # SuplierId
   supplierAddress: Bytes! # Supplier's Address

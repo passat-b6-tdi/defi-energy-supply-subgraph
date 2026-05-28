@@ -1,4 +1,4 @@
-type EnergyConsumption @entity {
+type EnergyConsumption @entity(immutable: false) {
   id: ID! # Unique Identifier (Consumer's Address + Supplier Id)
   consumer: Consumer! # Associated Consumer
   lastUpdateTimestamp: BigInt! # Record Timestamp
