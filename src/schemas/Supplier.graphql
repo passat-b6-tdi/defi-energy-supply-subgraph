@@ -1,5 +1,5 @@
-type Supplier @entity {
-  id: ID! # Unique Identifier (Supplier's Address + Supplier Id)
+type Supplier @entity(immutable: false) {
+  id: ID! # Unique Identifier (Supplier Id)
   supplierId: BigInt! # SuplierId
   supplierAddress: Bytes! # Supplier's Address
   consumers: [Consumer!]! @derivedFrom(field: "supplier") # Supplier's Consumers

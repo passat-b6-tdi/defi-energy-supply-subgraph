@@ -1,4 +1,4 @@
-type Consumer @entity {
+type Consumer @entity(immutable: false) {
   id: ID! # Unique Identifier (Consumer's Address + Supplier Id)
   consumerAddress: Bytes! # Consumer's Address
   supplier: Supplier! # Consumer's Supplier

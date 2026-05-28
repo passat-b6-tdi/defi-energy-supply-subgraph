@@ -1,5 +1,5 @@
-type EnergyProduction @entity {
-  id: ID! # Unique Identifier (Supplier's Address + Supplier Id)
+type EnergyProduction @entity(immutable: false) {
+  id: ID! # Unique Identifier (Supplier Id)
   supplier: Supplier! # Associated Supplier
   lastUpdateTimestamp: BigInt! # Record Timestamp
   production: BigInt! # Consumption Value

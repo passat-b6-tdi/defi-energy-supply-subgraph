@@ -18,19 +18,24 @@ dataSources:
       language: wasm/assemblyscript
       file: ./src/mappings/register.ts
       entities:
+        - Producer
         - Supplier
-        - User
+        - Consumer
       abis:
         - name: Register
           file: ./abis/Register.json
       eventHandlers:
+        - event: ProducerRegistered(indexed address,indexed address,indexed uint256,uint256)
+          handler: handleProducerRegistered
+        - event: ProducerUnregistered(indexed address,indexed uint256,uint256)
+          handler: handleProducerUnregistered
         - event: SupplierRegistered(indexed address,indexed address,indexed uint256,uint256)
           handler: handleSupplierRegistered
-        - event: SupplierUnregistered(indexed address,indexed address,indexed uint256,uint256)
+        - event: SupplierUnregistered(indexed address,indexed uint256,uint256)
           handler: handleSupplierUnregistered
-        - event: ConsumerRegistered(indexed address,indexed address,indexed uint256,address,uint256)
+        - event: ConsumerRegistered(indexed address,indexed address,indexed uint256,uint256)
           handler: handleUserRegistered
-        - event: ConsumerUnregistered(indexed address,indexed address,indexed uint256,address,uint256)
+        - event: ConsumerUnregistered(indexed address,indexed address,indexed uint256,uint256)
           handler: handleUserUnregistered
 {{ /dataSources.Register }}
 {{ #dataSources.EnergyOracle }}
@@ -55,8 +60,8 @@ dataSources:
       eventHandlers:
         - event: EnergyConsumptionRecorded(indexed address,indexed address,indexed uint256,uint256,uint256)
           handler: handleEnergyConsumptionRecorded
-        - event: EnergyConsumptionPaid(indexed address,indexed address,indexed uint256,uint256)
-          handler: handleEnergyConsumptionSent
+        - event: EnergyConsumptionUpdated(indexed address,indexed address,indexed uint256,uint256,uint256,uint256)
+          handler: handleEnergyConsumptionUpdated
         - event: EnergyProductionRecorded(indexed address,indexed address,indexed uint256,uint256,uint256)
           handler: handleEnergyProductionRecorded
 {{ /dataSources.EnergyOracle }}

@@ -1,0 +1,14 @@
+{
+  "network": "base-sepolia",
+  "schemaFileName": "schema.graphql",
+  "dataSources": {
+    "Register": {
+      "address": "0x6A7a5178299f3257d7f35343719F6C577dE4A0f3",
+      "startBlock": 42099207
+    },
+    "EnergyOracle": {
+      "address": "0xb7a26DC03a9BB0d31b8770e4Fb88027AD705Ba06",
+      "startBlock": 42099209
+    }
+  }
+}
