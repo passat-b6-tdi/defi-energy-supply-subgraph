@@ -1,3 +1,4 @@
+import { BigInt } from "@graphprotocol/graph-ts";
 import {
   EnergyConsumptionRecorded as EnergyConsumptionRecordedEvent,
   EnergyConsumptionUpdated as EnergyConsumptionUpdatedEvent,
@@ -15,7 +16,9 @@ export function handleEnergyConsumptionRecorded(
 
   let consumption = EnergyConsumption.mustLoad(consumerId);
   consumption.lastUpdateTimestamp = event.params.timestamp;
-  consumption.consumption = event.params.consumption;
+  consumption.consumption = consumption.consumption.plus(
+    event.params.consumption,
+  );
 
   consumption.save();
 }
@@ -29,9 +32,10 @@ export function handleEnergyConsumptionUpdated(
 
   let consumption = EnergyConsumption.mustLoad(consumerId);
   consumption.lastUpdateTimestamp = event.params.timestamp;
-  consumption.consumption = consumption.consumption
-    .plus(event.params.consumptionToAdd)
-    .minus(event.params.consumptionToRemove);
+  // Escrow clears the full USD debt on payment; reset the kWh accumulator too.
+  if (event.params.consumptionToRemove.gt(BigInt.fromI32(0))) {
+    consumption.consumption = BigInt.fromI32(0);
+  }
 
   consumption.save();
 }
