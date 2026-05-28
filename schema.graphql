@@ -13,14 +13,20 @@ type EnergyConsumption @entity {
 }
 
 type EnergyProduction @entity {
-  id: ID! # Unique Identifier (Supplier's Address + Supplier Id)
+  id: ID! # Unique Identifier (Supplier Id)
   supplier: Supplier! # Associated Supplier
   lastUpdateTimestamp: BigInt! # Record Timestamp
   production: BigInt! # Consumption Value
 }
 
+type Producer @entity {
+  id: ID! # Unique Identifier (producerId hex)
+  producerId: BigInt! # Producer Id
+  producerAddress: Bytes! # Producer's Address
+}
+
 type Supplier @entity {
-  id: ID! # Unique Identifier (Supplier's Address + Supplier Id)
+  id: ID! # Unique Identifier (Supplier Id)
   supplierId: BigInt! # SuplierId
   supplierAddress: Bytes! # Supplier's Address
   consumers: [Consumer!]! @derivedFrom(field: "supplier") # Supplier's Consumers
