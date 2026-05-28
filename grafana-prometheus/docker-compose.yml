@@ -21,8 +21,8 @@ services:
       dockerfile: Dockerfile-python
     volumes:
       - ./prometheus/prometheus.py:/app/prometheus.py
-    expose:
-      - "8000"
+    ports:
+      - "8000:8000"
     depends_on:
       - prometheus
     networks:
